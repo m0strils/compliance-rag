@@ -1,0 +1,4 @@
+# ComplianceRAG — MVP deps (minimal on purpose).
+# Phase 1 will add: langchain, langgraph, langchain-chroma, ragas, fastapi
+anthropic>=0.40
+chromadb>=0.5
