@@ -33,6 +33,20 @@ import os
 import pathlib
 import sys
 
+# onnxruntime >= 1.21 on macOS aborts at process exit ("recursive_mutex lock
+# failed: Invalid argument") when its 1DS telemetry uploader thread races the
+# static destructors (microsoft/onnxruntime#24579). Chroma's default embedder
+# runs on onnxruntime, so every reindex/ask process here is exposed. Switch the
+# telemetry off before the first import (env) and before the first session
+# (API); both are no-ops when onnxruntime is absent. Same fix as interchange-ai.
+os.environ.setdefault("ORT_DISABLE_TELEMETRY", "1")
+try:
+    import onnxruntime as _ort
+
+    _ort.disable_telemetry_events()
+except Exception:  # ImportError, or a build without the call
+    pass
+
 # --- config ---------------------------------------------------------------
 DOCS_DIR = pathlib.Path(__file__).parent / "docs"
 CHROMA_DIR = str(pathlib.Path(__file__).parent / ".chroma")
