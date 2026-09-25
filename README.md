@@ -128,7 +128,7 @@ user ──input guardrail (LLM01)──────────────> Cl
 | Security | input/output guardrails, injection defense (LLM01), instruction/data separation | ✅ |
 | Governance | per-request audit log w/ cost + grounding; secrets hygiene; cited-to-source | ✅ |
 | Evaluation | golden dataset + faithfulness gate (RAGAS) | ⬜ |
-| Observability | latency/cost in audit log; distributed tracing (Phoenix) | 🟡 |
+| Observability | latency/cost in audit log | 🟡 |
 | Reliability | graceful refusal over hallucination; retries/fallback routing | 🟡 |
 | Cost | per-request estimate + running total; model routing | 🟡 |
 | Deployment | IaC, CI/CD, AWS Bedrock in-VPC | ⬜ |
