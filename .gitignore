@@ -6,3 +6,9 @@
 audit.jsonl
 __pycache__/
 .venv/
+
+# os / tooling
+.DS_Store
+*.pyc
+.pytest_cache/
+*.pem
